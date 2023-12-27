@@ -14,7 +14,8 @@
 
 	</properties>
 
-
+            </dependencies> 
+	
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>nexusRepo</id>
