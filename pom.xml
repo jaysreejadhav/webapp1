@@ -13,8 +13,6 @@
 		<sonar.host.url>http://100.26.168.227:9000/</sonar.host.url>
 
 	</properties>
-
-            </dependencies> 
 	
 	<distributionManagement>
 		 <snapshotRepository>
