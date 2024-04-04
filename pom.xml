@@ -17,12 +17,12 @@
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>nexusRepo</id>
-		    <url>http://100.26.175.47:8081/repository/forest-2snapshot/</url>
+		    <url>http://54.158.199.85:8081/repository/b12snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
 		    <id>nexusRepo</id>
-		    <url>http://100.26.175.47:8081/repository/forest-1release/</url>
+		    <url>http://54.158.199.85:8081/repository/b12releaserepo/</url>
 		</repository>
   	</distributionManagement>
 	
