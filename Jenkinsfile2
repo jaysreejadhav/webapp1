@@ -2,34 +2,62 @@ pipeline {
     agent any
 	
 	tools {
-    jdk 'JAVA1.8'
-
-  }
+	jdk 'java-1.8'
+	
+	}
 
     stages {
         stage('CLONE SCM') {
             steps {
-                echo 'cloning code from Github'
-				git branch: 'main', url: 'https://github.com/devopstraininghub/webapp1.git'
-            }
+                 echo 'cloning code from github'
+				 git branch: 'main', url: 'https://github.com/jaysreejadhav/webapp1.git'  
+			}
+			          
         }
 		
+		
+        stage('BUILD ARTIFACT') {
+            steps {
+                 echo 'build code with mvn tool'
+				 sh 'mvn clean install'
+			}
+			          
+        }
+		
+		stage('JAVA VAERSION') {
+            steps {
+                 echo 'java version check'
+				 sh 'java -version'
+			}
+			          
+        }
+		
+		
+        stage('SONAR ANALYSIS') {
+            steps {
+                 echo 'analysing code quality'
+				 sh 'mvn clean sonar:sonar'
+			}
+			          
+        }
+        
+         stage('BUILD ARTIFACT AND PUSHING IN NEXUS') {
+            steps {
+                 echo 'artifact push in nexus'
+				 sh 'mvn clean deploy'
+			}
+			          
+        }
+		
+		
+        stage('DEPLOY') {
+            steps {
+                 echo 'deploying artifact to tomcat ap/n server'
+                 deploy adapters: [tomcat9(credentialsId: 'tomcatjaysree', path: '', url: 'http://3.89.145.186:8080/')], contextPath: 'pipeline', war: '**/*.war'
+			}
+			          
+        }
 
-		
-			
-		stage('Build Artifact') {
-            steps {
-                echo 'Build Artifact with maven build tool'
-				sh 'mvn clean sonar:sonar deploy'
-            }
-        }
-		
-		
-		stage('Deploy') {
-            steps {
-                echo 'Deploy to tomcat ap/n server '
-				deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://34.224.5.225:8081/')], contextPath: 'b12book', war: '**/*.war'
-            }
-        }
-    }
-}
+ } 
+ 
+} 
