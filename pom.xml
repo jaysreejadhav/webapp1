@@ -10,19 +10,19 @@
 
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
-		<sonar.host.url>http://18.212.139.98:9000/</sonar.host.url>
+		<sonar.host.url>http://54.160.160.14:9000/</sonar.host.url>
 
 	</properties>
 	
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>nexusRepo</id>
-		    <url>http://50.17.49.79:8081/repository/b12snapshot/</url>
+		    <url>http://54.85.144.215:8081/repository/b12snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
 		    <id>nexusRepo</id>
-		    <url>http://50.17.49.79:8081/repository/b12release/</url>
+		    <url>http://54.85.144.215:8081/repository/b12release/</url>
 		</repository>
   	</distributionManagement>
 	
